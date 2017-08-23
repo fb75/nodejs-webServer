@@ -3,6 +3,9 @@ const fs = require('fs');
 const express = require('express');
 const hbs = require('hbs');
 
+// Creating variable for port on WebServer (take value from enviroment variable of local machine to use in Heroku or manual setting for localhost)
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 // Setting HandleBars Partials local directory
@@ -26,7 +29,7 @@ app.use((req, res, next) => {
 });
 
 // Maintenance Page:
-// not using .next() after res.render() won't let next middleware to run 
+// not using .next() after res.render() won't let next middleware to run
 //app.use((req, res, next) => {
 //	res.render('manutenzione.hbs');
 // });
@@ -62,7 +65,7 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
 	//res.send('About Page');
-	
+
 	res.render('about.hbs', {
 		titoloPagina: 'About Page',
 		annoCorrente: new Date().getFullYear()
@@ -79,5 +82,5 @@ app.get('/bad', (req, res) => {
 
 // Starting server on localhost:3000
 app.listen(3000, () => {
-	console.log('WebServer attivo su porta 3000');
+	console.log(`WebServer attivo su porta: ${port}`);
 });
