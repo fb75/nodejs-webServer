@@ -81,6 +81,6 @@ app.get('/bad', (req, res) => {
 });
 
 // Starting server on localhost:3000
-app.listen(3000, () => {
+app.listen(port, () => {
 	console.log(`WebServer attivo su porta: ${port}`);
 });
